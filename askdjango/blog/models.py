@@ -26,7 +26,7 @@ class Post(models.Model):
         validators=[lnglat_validator],
         help_text='위도/경도 포멧으로 입력하세요')
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
-    tag_set = models.ManyToManyField('Tag')
+    tag_set = models.ManyToManyField('Tag', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)   # 처음datetime이 생성될 때 자동 생성 Ture
     updated_at = models.DateTimeField(auto_now=True)    #  datetime이 저장될 때 마다.!
 
@@ -48,3 +48,6 @@ class Comment(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
