@@ -41,7 +41,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:post_detail', args=[self.id])
-
+    # 저는 매번 어떠한 모델에 대해서 디테일 뷰를 만들게 되면 그즉시 get_abloute_url이라는 이 멤버 함수를 무조건 선언합니다.
 
 class Comment(models.Model):
     post = models.ForeignKey(Post)
